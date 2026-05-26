@@ -16,7 +16,9 @@ var likeRouter = require('./routes/likes');
 
 var app = express();
 
-app.use(cors()); // Permite que o React fale com o Node.js
+var FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+
+app.use(cors( {origin : FRONTEND_URL, credentials: true } )); // Permite que o React fale com o Node.js
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
