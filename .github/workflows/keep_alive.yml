@@ -1,0 +1,16 @@
+name: Manter Servidor Acordado
+
+on:
+  schedule:
+    # Dispara a cada 10 minutos (Garante que corre antes dos 15 min do Render)
+    - cron: '*/10 * * * *'
+  # Permite-te testar o bot manualmente clicando num botão no GitHub
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Chamar o Backend
+      run: curl -s https://auth-backend-pedropestana.onrender.com
+
